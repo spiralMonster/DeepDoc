@@ -1,0 +1,9 @@
+dense_layer_config=[
+    {
+    "units":,
+    "activation":,
+    "kernel_initializer":,
+    "kernel_regularizer":
+    },
+  ...
+]
