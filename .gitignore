@@ -1,3 +1,4 @@
+.env
 .ipynb_checkpoints/
 Data_Store/
 Document_Classifier/.ipynb_checkpoints/
@@ -6,4 +7,4 @@ Document_Classifier/Model_Training/.ipynb_checkpoints/
 Document_Classifier/Model_Training/__pycache__/
 Document_Classifier/Data_Preparations/.ipynb_checkpoints/
 Document_Classifier/Data_Preparations/__pycache__/
-
+Essence_Extractor/.ipynb_checkpoints/
