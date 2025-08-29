@@ -2,7 +2,7 @@ import os
 from dotenv import load_dotenv
 
 from langchain.prompts import ChatPromptTemplate
-from langchain_google_genai import ChatGoogleGenerativeAI
+from langchain_mistralai import ChatMistralAI
 
 from pydantic import BaseModel,Field
 from typing_extensions import List
@@ -16,13 +16,11 @@ class Named_Entity_Extractor_Specs(BaseModel):
 
 
 def Named_Entity_Extractor(text):
-    llm=ChatGoogleGenerativeAI(
-        model="gemini-1.5-pro",
+    llm=ChatMistralAI(
+        model="mistral-small-latest",
         temperature=0,
-        max_tokens=None,
-        timeout=None,
         max_retries=2,
-        api_key=os.environ["GOOGLE_GEMINI_API_KEY"]
+        api_key=os.environ["MISTRAL_API_KEY"]
     ).with_structured_output(Named_Entity_Extractor_Specs)
 
     template="""
