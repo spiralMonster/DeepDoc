@@ -13,7 +13,7 @@ stop_words=set(stopwords.words("english"))
 
 
 
-def CleanText(text):
+def CleanText(text,filter_stopwords=True):
     data=re.sub(r"\n","",text)
     data=re.sub(r"\s\s+"," ",data)
 
@@ -28,10 +28,15 @@ def CleanText(text):
             word=word.lower()
             word=word.translate(table1)
             word=word.translate(table2)
-
-            if word not in stop_words:
+            
+            if filter_stopwords:
+                if word not in stop_words:
+                    final_text+=word
+                    final_text+=" "
+            else:
                 final_text+=word
                 final_text+=" "
+                
 
     final_text=final_text.strip()
     return final_text
