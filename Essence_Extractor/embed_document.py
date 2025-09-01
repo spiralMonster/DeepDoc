@@ -8,13 +8,12 @@ from dotenv import load_dotenv
 import re
 from langchain_chroma.vectorstores import Chroma
 from langchain_text_splitters import TokenTextSplitter
+from langchain_mistralai import MistralAIEmbeddings
+from langchain_core.vectorstores.in_memory import InMemoryVectorStore
 
-from langchain_mistralai.embeddings import MistralAIEmbeddings
 
 load_dotenv()
 
-VECTOR_STORE=Path(os.getcwd()).parent/"Data_Store"/"vectorstore"
-os.makedirs(VECTOR_STORE,exist_ok=True)
 
 def Embed_Document(doc):
     embedding_model=MistralAIEmbeddings(
@@ -22,10 +21,8 @@ def Embed_Document(doc):
         api_key=os.environ["MISTRAL_API_KEY"]
     )
 
-    vectorstore=Chroma(
-        embedding_function=embedding_model,
-        persist_directory=VECTOR_STORE
-    )
+    
+    vectorstore=InMemoryVectorStore(embedding_model)
     
     doc=re.sub(r"\n","",doc)
     doc=re.sub(r"\s\s+"," ",doc)
@@ -38,6 +35,8 @@ def Embed_Document(doc):
     splitted_texts=splitter.split_text(doc)
 
     vectorstore.add_texts(splitted_texts)
+
+    return vectorstore
 
     
 
