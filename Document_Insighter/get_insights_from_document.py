@@ -35,7 +35,17 @@ def GetDocumentInsights(doc_type,doc_essence,persons_mentioned,organization_ment
     Your job is to generate the question-answer pair such that the person will get the insights about the document.
 
     Note:
-     - Try to ask the general questions for which you can get the answers from the context.
+     - Try to include general questions like:
+        "What the document is about?"
+        
+     - Also include question regarding the type of the document.
+        For example if the document is regarding:
+        Politics: "What politicans are involved?", "What kind of policy is introduced?"
+        Sports: "What kind of sport event is mentioned?","Which players are involved?"
+        Technology: "What kind of technology is mentioned?", "Which organizations are involved?"
+        
+     - Then ask more specific questions. Questions about the things mentioned in the document.
+
      - Refrain from using the "Named Entities" in question generation.
      - Generate minimum three and maximum five question-answer pair.
 
@@ -67,7 +77,7 @@ def GetDocumentInsights(doc_type,doc_essence,persons_mentioned,organization_ment
 
     doc_insights=results.doc_insights
 
-    return results
+    return doc_insights
 
 
 if __name__=="__main__":
@@ -130,11 +140,10 @@ if __name__=="__main__":
     )
 
     print("Document Insight: ")
-    print(document_insights)
-    # for insight in document_insights:
-    #     print(f"Question: {insight['question']}")
-    #     print(f"Answer: {insight['answer']}")
-    #     print("\n")
+    for insight in document_insights:
+        print(f"Question: {insight['question']}")
+        print(f"Answer: {insight['answer']}")
+        print("\n")
 
     
 
