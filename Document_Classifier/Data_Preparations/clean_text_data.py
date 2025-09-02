@@ -6,7 +6,7 @@ import pandas as pd
 import warnings
 warnings.filterwarnings("ignore")
 
-nltk.download("stopwords")
+
 from nltk.corpus import stopwords
 
 stop_words=set(stopwords.words("english"))

@@ -22,7 +22,7 @@ data_store=Path(os.getcwd()).parent/"Data_Store"
 
 
 
-def Analyse_Text_Sentiment(text):
+def Analyse_Text_Sentiment(text,model):
     print(f"[Text Sentiment Analyser Pipeline started...]")
     
     cleaned_text=CleanText(text)
@@ -44,20 +44,7 @@ def Analyse_Text_Sentiment(text):
     model_inp=[model_inp[:,ind,:] for ind in range(5)]
     print(f"[INFO] Input for Model Prepared")
 
-    with CustomObjectScope(
-        {
-            "Multi_LSTM_Unit":Multi_LSTM_Unit
-        }
-    ):
-        model=load_model(
-            os.path.join(
-                data_store,
-                "sentiment_analyser_model.h5"     
-            )
-        )
-
-    print(f"[INFO] Sentiment Analyser Model loaded")
-
+   
     predictions=model.predict(model_inp,batch_size=1)[0].tolist()
     print(f"[INFO] Predictions made")
 
@@ -79,10 +66,23 @@ def Analyse_Text_Sentiment(text):
 
 
 if __name__=="__main__":
+    with CustomObjectScope({
+        "Multi_LSTM_Unit":Multi_LSTM_Unit
+    }):
+        model=load_model(
+            os.path.join(
+                data_store,
+                "sentiment_analyser_model.h5"
+                
+            )
+        )
+
+    print(f"[INFO] Sentiment Analyser model loaded")
+    
     df=pd.read_csv(os.path.join(data_store,"sentiment_analysis_dataset.csv"))
     text=df.iloc[2].Description
 
     print(f"The Text is: ")
     print(text)
 
-    Analyse_Text_Sentiment(text)
+    Analyse_Text_Sentiment(text,model)

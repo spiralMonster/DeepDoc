@@ -71,7 +71,7 @@ def GetDocumentInsights(doc_type,doc_essence,persons_mentioned,organization_ment
         "doc_type":doc_type,
         "important_points":doc_essence,
         "persons_mentioned":persons_mentioned,
-        "organizations_mentioned":organizations_mentioned,
+        "organizations_mentioned":organization_mentioned,
         "places_mentioned":places_mentioned
     })
 
