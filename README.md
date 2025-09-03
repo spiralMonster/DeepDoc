@@ -75,7 +75,6 @@ DeepDoc is a comprehensive AI-powered framework for document analysis. It provid
 ---
 
 
----
 
 ## 🖼️ DeepDoc UI 
 
@@ -109,4 +108,25 @@ Below are some screenshots of the DeepDoc interface:
 ![Summarizer UI](images/summarizer.png) 
 
 ---
+
+## Getting Started:
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/spiralMonster/DeepDoc
+   ```
+2. Install dependencies:
+   ```bash
+   pip install -r requirements.txt
+   ```
+3. Run the chatbot:
+   ```bash
+   cd Frontend
+   streamlit run Home.py
+   ```
+
+---
+
+## Author
+
+Developed by Amartya Pawar (spiralMonster)
 
