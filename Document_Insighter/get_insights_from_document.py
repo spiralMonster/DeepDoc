@@ -7,6 +7,8 @@ from langchain_mistralai import ChatMistralAI
 from pydantic import BaseModel,Field
 from typing_extensions import TypedDict,Annotated,List
 
+load_dotenv()
+
 
 class QuestionAnswerPair(TypedDict):
     question: Annotated[str,...,"The question asked"]

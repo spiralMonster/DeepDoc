@@ -36,6 +36,9 @@ st.write(" ")
 st.write(" ")
 
 if extractor_button:
+    st.session_state.extractor_triggered = True
+
+if st.session_state.extractor_triggered:
     document=st.session_state.get("document")
 
     if document:
@@ -80,12 +83,13 @@ if extractor_button:
             text_sentiments=st.session_state.get("text_sentiment")
 
 
+        ind=1
         for imp_point,sentiment_result in zip(important_points,text_sentiments):
             
             with st.expander(f"{imp_point}"):
                 c1,c2,c3=st.columns([1,2,1])
                 with c2:
-                    sentiment_button=st.button("Analyse Sentiment")
+                    sentiment_button=st.button("Analyse Sentiment",key="id_"+str(ind))
 
                 st.write(" ")
                 if sentiment_button:
@@ -123,6 +127,8 @@ if extractor_button:
     
                 st.write(" ")
                 st.write(" ")
+
+                ind+=1
 
                 
     else:

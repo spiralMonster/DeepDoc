@@ -34,20 +34,20 @@ def Possible_Effect_Generator(document_essence,context):
      - Try to predict the effect due to the statements.
 
     For Example:
-     - {
+     - [
       "Statement": "regarding a war"
       "Effect": "Rise in the inflation rate for the countries in war"
-       }
+       ]
 
-     - {
+     - [
       "Statement": "Product launched by a company"
       "Effect": "Rise in the stock price of company", "Loss for the competetive company"
-       }
+       ]
 
-     - {
+     - [
        "Statement": "A Policy introduced by a government"
        "Effect": "Oppostion party opposing the statement"
-       }
+       ]
 
     You will also be provided with the context from the Internet. So use it accordingly.
 

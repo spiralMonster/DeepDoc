@@ -1,3 +1,6 @@
+from dotenv import load_dotenv
+load_dotenv()
+
 import streamlit as st
 
 st.header("DeepDoc")
@@ -23,6 +26,19 @@ if "text_sentiment" not in st.session_state:
 
 if "document_insights" not in st.session_state:
     st.session_state.document_insights=None
+
+if "forecasted_effects" not in st.session_state:
+    st.session_state.forecasted_effects=None
+    
+
+if "extractor_triggered" not in st.session_state:
+    st.session_state.extractor_triggered = False
+
+if "doc_summary" not in st.session_state:
+    st.session_state.doc_summary=None
+
+if "vectorstore" not in st.session_state:
+    st.session_state.vectorstore=None
     
 
 uploaded_file = st.file_uploader("Upload your document", type=["txt"])
@@ -61,6 +77,8 @@ if not st.session_state.get("document"):
     st.session_state.document_essence=None
     st.session_state.text_sentiment=None
     st.session_state.document_insights=None
-
+    st.session_state.forecasted_effects=None
+    st.session_state.doc_summary=None
+    st.session_state.vectorstore=None
     
         
